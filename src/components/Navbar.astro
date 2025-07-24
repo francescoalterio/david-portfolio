@@ -2,66 +2,215 @@
 
 ---
 
-<nav
-  style="width:100%; background:var(--nav-bg,#fff); box-shadow:0 2px 12px #0001; padding:0.5rem 0; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; border-bottom:1px solid #eee;"
->
-  <div
-    style="flex:1; text-align:left; font-weight:600; font-size:1.1rem; color:var(--nav-text,#222); padding-left:2rem; letter-spacing:0.02em;"
-  >
-    David Barrientos
-  </div>
-  <div
-    style="display:flex; gap:1.5rem; align-items:center; padding-right:2rem;"
-  >
-    <a
-      href="/"
-      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
-      >Inicio</a
-    >
-    <a
-      href="/proyectos"
-      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
-      >Proyectos</a
-    >
-    <a
-      href="/about"
-      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
-      >Sobre mí</a
-    >
-    <button
-      id="darkmode-toggle"
-      aria-label="Modo oscuro"
-      style="margin-left:1.5rem; background:none; border:none; color:var(--nav-text,#222); font-size:1.2rem; cursor:pointer; padding:0.2rem 0.7rem; border-radius:6px; transition:background 0.2s;"
-    >
-      🌙
+<nav class="navbar">
+  <div class="navbar-brand"><strong>David Barrientos</strong></div>
+  <input
+    type="checkbox"
+    id="nav-toggle"
+    class="nav-toggle"
+    aria-label="Abrir menú"
+  />
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <div class="navbar-links">
+    <a href="/">Inicio</a>
+    <a href="/proyectos">Proyectos</a>
+    <a href="/about">Sobre mí</a>
+    <button id="darkmode-toggle" aria-label="Modo oscuro">
+      <span id="darkmode-icon">🌙</span>
     </button>
   </div>
 </nav>
 
+<style>
+  .navbar {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-1 * var(--page-padding, 1.2rem));
+    margin-right: calc(-1 * var(--page-padding, 1.2rem));
+    background: var(--nav-bg, #fff);
+    box-shadow: 0 2px 12px #0001;
+    min-height: 3.5rem;
+    padding: 0.7rem 0;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    border-bottom: 1.5px solid #eee;
+    position: relative;
+    z-index: 10;
+  }
+  .navbar-brand {
+    flex: 1;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: var(--nav-text, #222);
+    padding-left: 2rem;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .navbar-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding-right: 2rem;
+  }
+  .navbar-links a {
+    color: var(--nav-text, #222);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  #darkmode-toggle {
+    margin-left: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--nav-text, #222);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  /* Hamburguesa */
+  .nav-toggle {
+    display: none;
+  }
+  .nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    margin-right: 1.5rem;
+  }
+  .nav-toggle-label span {
+    display: block;
+    width: 1.7rem;
+    height: 3px;
+    background: var(--nav-text, #222);
+    margin: 0.22rem 0;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  @media (max-width: 800px) {
+    .navbar {
+      flex-wrap: wrap;
+      min-height: 3.5rem;
+      padding: 0.7rem 0;
+      border-bottom: 1.5px solid #eee;
+    }
+    .nav-toggle,
+    .nav-toggle-label {
+      top: 0.65rem;
+      height: 3.5rem;
+      align-items: center;
+    }
+    .navbar-brand {
+      padding-left: 1rem;
+      flex: 1 0 60%;
+      min-width: 0;
+      margin-bottom: 0.2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .nav-toggle {
+      display: block;
+      position: absolute;
+      right: 1.2rem;
+      top: 1.1rem;
+      z-index: 200;
+      width: 2.2rem;
+      height: 2.2rem;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .nav-toggle-label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      cursor: pointer;
+      position: absolute;
+      right: 1.2rem;
+      top: 1.1rem;
+      z-index: 201;
+    }
+    .nav-toggle-label span {
+      display: block;
+      width: 1.7rem;
+      height: 3px;
+      background: var(--nav-text, #222);
+      margin: 0.22rem 0;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .navbar-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100vw;
+      background: var(--nav-bg, #fff);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.2rem 2rem 1.5rem 2rem;
+      gap: 1.2rem;
+      display: none;
+      box-shadow: 0 4px 24px #0002;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      z-index: 100;
+    }
+    .nav-toggle:checked + .nav-toggle-label + .navbar-links {
+      display: flex;
+    }
+    .navbar-links a,
+    #darkmode-toggle {
+      font-size: 1.1rem;
+      padding: 0.5rem 0.7rem;
+      width: 100%;
+      text-align: left;
+    }
+  }
+  @media (max-width: 600px) {
+    .navbar {
+      margin-left: calc(-1 * 0.5rem);
+      margin-right: calc(-1 * 0.5rem);
+    }
+  }
+</style>
+
 <script>
   const toggle = document.getElementById("darkmode-toggle");
+  const icon = document.getElementById("darkmode-icon");
+  function setIcon() {
+    const isDark = document.documentElement.classList.contains("darkmode");
+    if (icon) icon.textContent = isDark ? "☀️" : "🌙";
+  }
   if (toggle) {
     toggle.onclick = () => {
-      const dark = document.documentElement.classList.toggle("darkmode");
+      const html = document.documentElement;
+      const dark = html.classList.toggle("darkmode");
       localStorage.setItem("darkmode", dark ? "1" : "0");
-      updateColors();
+      setIcon();
     };
-    function updateColors() {
-      const isDark = document.documentElement.classList.contains("darkmode");
-      document.documentElement.style.setProperty(
-        "--nav-bg",
-        isDark ? "#181818" : "#fff"
-      );
-      document.documentElement.style.setProperty(
-        "--nav-text",
-        isDark ? "#faf9f6" : "#222"
-      );
-      document.body.style.background = isDark ? "#181818" : "#faf9f6";
-    }
+    // Inicializar icono y modo oscuro si está guardado
     if (localStorage.getItem("darkmode") === "1") {
       document.documentElement.classList.add("darkmode");
-      updateColors();
     }
-    updateColors();
+    setIcon();
   }
 </script>

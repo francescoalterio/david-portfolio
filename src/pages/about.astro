@@ -5,7 +5,8 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <section
-    style="max-width:700px; margin:2.5rem auto; background:#faf9f6; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem; text-align:center;"
+    class="about-card"
+    style="max-width:700px; margin:2.5rem auto; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem; text-align:center;"
   >
     <div
       style="width:160px; height:160px; border-radius:50%; overflow:hidden; margin:0 auto 1.5rem auto; box-shadow:0 2px 12px #0002; display:block;"
@@ -17,12 +18,33 @@ import Layout from "../layouts/Layout.astro";
       />
     </div>
     <h1
-      style="font-size:2.2rem; font-weight:600; margin-bottom:1.2rem; color:#222; letter-spacing:0.02em; font-family:'Montserrat',sans-serif;"
+      class="about-title"
+      style="font-size:2.2rem; font-weight:600; margin-bottom:1.2rem; letter-spacing:0.02em; font-family:'Montserrat',sans-serif;"
     >
       Sobre mí
     </h1>
-    Soy David, arquitecto apasionado por el diseño funcional y estético. Mi enfoque
-    combina creatividad, sostenibilidad y atención al detalle para crear espacios
-    únicos que mejoran la vida de las personas.
+    <p class="about-text">
+      Soy David, arquitecto apasionado por el diseño funcional y estético. Mi
+      enfoque combina creatividad, sostenibilidad y atención al detalle para
+      crear espacios únicos que mejoran la vida de las personas.
+    </p>
   </section>
 </Layout>
+<style>
+  .about-card {
+    background: var(--card-bg, #faf9f6);
+    color: var(--card-text, #222);
+  }
+  .darkmode .about-card {
+    background: var(--card-bg);
+    color: var(--card-text);
+  }
+  .about-title,
+  .about-text {
+    color: var(--card-text);
+  }
+  .darkmode .about-title,
+  .darkmode .about-text {
+    color: var(--card-text);
+  }
+</style>

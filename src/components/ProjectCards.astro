@@ -8,7 +8,7 @@ const { projects = [] } = Astro.props;
   {
     projects.map((project) => (
       <article
-        style="width:340px; background:var(--card-bg,#faf9f6); border-radius:16px; box-shadow:0 4px 24px #0001; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s; color:var(--card-text,#222);"
+        style="width:340px; border-radius:16px; box-shadow:0 4px 24px #0001; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s;"
         class="card"
       >
         <img
@@ -18,17 +18,15 @@ const { projects = [] } = Astro.props;
           viewTransitionName={`project-image-${project.id}`}
         />
         <div style="padding:1.3rem 1.1rem; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
-          <h2 style="font-size:1.3rem; font-family:'Montserrat',sans-serif; color:var(--card-text,#222); font-weight:500; margin-bottom:0.7rem;">
+          <h2 style="font-size:1.3rem; font-family:'Montserrat',sans-serif; font-weight:500; margin-bottom:0.7rem;">
             {project.title}
           </h2>
-          <p style="color:var(--card-text,#444); font-size:1rem; line-height:1.6; margin-bottom:1.2rem; font-family:'Montserrat',sans-serif;">
+          <p style="font-size:1rem; line-height:1.6; margin-bottom:1.2rem; font-family:'Montserrat',sans-serif;">
             {project.description}
           </p>
           <a
             href={`/proyectos/${project.id}`}
-            style="display:block; margin-top:auto; background:#222; color:#fff; padding:0.6rem 1.2rem; border-radius:8px; text-align:center; text-decoration:none; font-weight:500; letter-spacing:0.03em; box-shadow:0 2px 8px #0001; transition:background 0.2s;"
-            onmouseover="this.style.background='#0077b6'"
-            onmouseout="this.style.background='#222'"
+            class="card-button"
             onclick={`if(document.startViewTransition){document.startViewTransition(()=>{window.location.href='/proyectos/${project.id}'}) ; return false;}`}
           >
             Ver más detalles
@@ -40,14 +38,66 @@ const { projects = [] } = Astro.props;
 </section>
 <style>
   .card {
-    background: var(--card-bg, #faf9f6) !important;
-    color: var(--card-text, #222) !important;
+    background: var(--card-bg, #faf9f6);
+    color: var(--card-text, #222);
     transition:
       background 0.2s,
       color 0.2s;
   }
   .darkmode .card {
-    background: var(--card-bg, #232323) !important;
-    color: var(--card-text, #faf9f6) !important;
+    background: #111216 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 24px #0008 !important;
+  }
+
+  .card h2,
+  .card p {
+    color: inherit;
+  }
+
+  .card-button {
+    display: block;
+    margin-top: auto;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 8px #0001;
+    background: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      transform 0.2s ease-in-out;
+  }
+
+  .card-button:hover {
+    background: #222;
+    color: #fff;
+    transform: scale(1.05);
+    filter: none;
+  }
+
+  :global(html.darkmode) .card-button {
+    background: #fff !important;
+    color: #000 !important;
+    font-weight: 600;
+    border: 1.5px solid #e0e0e0 !important;
+    box-shadow: 0 2px 8px #0002 !important;
+    font-family: "Montserrat", sans-serif !important;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      transform 0.2s ease-in-out !important;
+  }
+
+  :global(html.darkmode) .card-button:hover {
+    background: #fff !important;
+    color: #000 !important;
+    transform: scale(1.05);
+    filter: none;
   }
 </style>

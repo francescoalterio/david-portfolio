@@ -18,7 +18,12 @@ import Navbar from "../components/Navbar.astro";
 </html>
 
 <style>
-  html,
+  html {
+    box-sizing: border-box;
+    /* Elimina el padding global de html, solo lo dejamos en body */
+    padding-left: 0;
+    padding-right: 0;
+  }
   body {
     margin: 0;
     width: 100%;
@@ -28,16 +33,26 @@ import Navbar from "../components/Navbar.astro";
     transition:
       background 0.2s,
       color 0.2s;
+    box-sizing: border-box;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
   }
   .darkmode {
-    --bg: #181818;
-    --text: #faf9f6;
-    --card-bg: #232323;
-    --card-text: #faf9f6;
-    --input-bg: #232323;
-    --input-text: #faf9f6;
-    --nav-bg: #181818;
-    --nav-text: #faf9f6;
+    --bg: #1a1a1a;
+    --text: #ffffff;
+    --card-bg: #232427;
+    --card-text: #ffffff;
+    --input-bg: #232427;
+    --input-text: #ffffff;
+    --input-border: #444;
+    --nav-bg: #1a1a1a;
+    --nav-text: #ffffff;
   }
   .card,
   article[style*="background:#faf9f6"],
@@ -52,7 +67,7 @@ import Navbar from "../components/Navbar.astro";
   textarea {
     background: var(--input-bg, #fff);
     color: var(--input-text, #222);
-    border: 1px solid #ddd;
+    border: 1px solid var(--input-border, #ddd);
     transition:
       background 0.2s,
       color 0.2s;

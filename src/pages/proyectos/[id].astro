@@ -21,30 +21,93 @@ if (!project) {
 ---
 
 <Layout>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
   <section
-    style="max-width:700px; margin:2rem auto; background:#faf9f6; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem; text-align:center;"
+    class="project-box"
+    style="max-width:700px; margin:2rem auto; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem; text-align:center; font-family:'Poppins', Arial, Helvetica, sans-serif;"
   >
-    <h1
-      style="font-size:2.2rem; font-weight:600; margin-bottom:1.2rem; color:#222; letter-spacing:0.02em; font-family:'Montserrat',sans-serif;"
-    >
+    <h1 class="project-title">
       {project.title}
     </h1>
     <img
       src={project.image}
       alt={project.title}
-      style="width:100%; max-width:320px; border-radius:14px; margin:1.5rem auto; box-shadow:0 2px 12px #0002; display:block;"
+      style="width:100%; max-width:700px; border-radius:22px; margin:2.5rem auto; box-shadow:0 6px 32px #0004; display:block;"
       viewTransitionName={`project-image-${project.id}`}
     />
-    <p
-      style="font-size:1.15rem; color:#444; line-height:1.7; margin-bottom:2rem; font-family:'Montserrat',sans-serif;"
+    <h2
+      class="project-desc-title"
+      style="margin-top:2.5rem; font-size:2rem; font-weight:700; letter-spacing:0.01em;"
     >
+      Descripción
+    </h2>
+    <p class="project-details">
       {project.details}
     </p>
-    <a
-      href="/proyectos"
-      style="display:inline-block; margin-top:1.5rem; background:#222; color:#fff; padding:0.7rem 1.6rem; border-radius:8px; text-decoration:none; font-weight:500; letter-spacing:0.03em; box-shadow:0 2px 8px #0001; transition:background 0.2s;"
-      onmouseover="this.style.background='#0077b6'"
-      onmouseout="this.style.background='#222'">← Volver a proyectos</a
-    >
+    {
+      project.images && project.images.length > 0 && (
+        <div style="margin:2rem 0; display:flex; flex-direction:column; gap:1.5rem; align-items:center;">
+          {project.images.map((img, idx) => (
+            <img
+              src={img}
+              alt={`Imagen extra ${idx + 1}`}
+              style="width:100%; max-width:500px; border-radius:12px; box-shadow:0 2px 12px #0002; object-fit:cover;"
+            />
+          ))}
+        </div>
+      )
+    }
+    <a href="/proyectos" class="project-back">← Volver a proyectos</a>
   </section>
 </Layout>
+
+<style>
+  .project-box {
+    background: var(--card-bg, #faf9f6);
+    color: var(--card-text, #222);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .project-title {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: var(--card-text, #222);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    transition: color 0.2s;
+  }
+  .project-desc-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--card-text, #222);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    transition: color 0.2s;
+  }
+  .project-details,
+  .project-back {
+    .darkmode .project-title,
+    .darkmode .project-desc-title {
+      color: #fff !important;
+    }
+    color: var(--card-text, #222);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    transition: color 0.2s;
+  }
+  .darkmode .project-box {
+    background: var(--card-bg, #232427);
+    color: var(--card-text, #fff);
+  }
+  .darkmode .project-title,
+  .darkmode .project-details,
+  .darkmode .project-back {
+    color: #fff !important;
+  }
+</style>

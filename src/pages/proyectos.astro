@@ -8,10 +8,19 @@ import ProjectCards from "../components/ProjectCards.astro";
 <Layout>
   <Fragment slot="default">
     <h1
-      style="text-align:center; margin-top:2rem; font-size:2.3rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:600; letter-spacing:0.02em;"
+      class="page-title"
+      style="text-align:center; margin-top:2rem; font-size:2.3rem; font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:0.02em;"
     >
       Proyectos
     </h1>
     <ProjectCards projects={projects} />
   </Fragment>
 </Layout>
+<style>
+  .page-title {
+    color: var(--text, #222);
+  }
+  .darkmode .page-title {
+    color: var(--text);
+  }
+</style>
