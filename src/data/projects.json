@@ -1,0 +1,23 @@
+[
+  {
+    "id": "casa-moderna",
+    "title": "Casa Moderna",
+    "image": "/assets/prueba.webp",
+    "description": "Residencia familiar con diseño contemporáneo y espacios abiertos.",
+    "details": "Proyecto de vivienda unifamiliar con énfasis en la iluminación natural y materiales sostenibles."
+  },
+  {
+    "id": "edificio-oficinas",
+    "title": "Edificio de Oficinas",
+    "image": "/assets/prueba.webp",
+    "description": "Edificio corporativo con fachada de vidrio y áreas colaborativas.",
+    "details": "Diseño para empresa tecnológica, priorizando flexibilidad y eficiencia energética."
+  },
+  {
+    "id": "galeria-arte",
+    "title": "Galería de Arte Minimalista",
+    "image": "/assets/prueba.webp",
+    "description": "Espacio expositivo con líneas puras y luz natural difusa.",
+    "details": "Proyecto de galería con enfoque en la simplicidad arquitectónica, materiales neutros y recorrido fluido para el visitante."
+  }
+]

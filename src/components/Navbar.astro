@@ -1,0 +1,67 @@
+---
+
+---
+
+<nav
+  style="width:100%; background:var(--nav-bg,#fff); box-shadow:0 2px 12px #0001; padding:0.5rem 0; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; border-bottom:1px solid #eee;"
+>
+  <div
+    style="flex:1; text-align:left; font-weight:600; font-size:1.1rem; color:var(--nav-text,#222); padding-left:2rem; letter-spacing:0.02em;"
+  >
+    David Barrientos
+  </div>
+  <div
+    style="display:flex; gap:1.5rem; align-items:center; padding-right:2rem;"
+  >
+    <a
+      href="/"
+      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
+      >Inicio</a
+    >
+    <a
+      href="/proyectos"
+      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
+      >Proyectos</a
+    >
+    <a
+      href="/about"
+      style="color:var(--nav-text,#222); text-decoration:none; font-weight:500; font-size:1rem; padding:0.2rem 0.5rem; border-radius:6px; transition:background 0.2s;"
+      >Sobre mí</a
+    >
+    <button
+      id="darkmode-toggle"
+      aria-label="Modo oscuro"
+      style="margin-left:1.5rem; background:none; border:none; color:var(--nav-text,#222); font-size:1.2rem; cursor:pointer; padding:0.2rem 0.7rem; border-radius:6px; transition:background 0.2s;"
+    >
+      🌙
+    </button>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById("darkmode-toggle");
+  if (toggle) {
+    toggle.onclick = () => {
+      const dark = document.documentElement.classList.toggle("darkmode");
+      localStorage.setItem("darkmode", dark ? "1" : "0");
+      updateColors();
+    };
+    function updateColors() {
+      const isDark = document.documentElement.classList.contains("darkmode");
+      document.documentElement.style.setProperty(
+        "--nav-bg",
+        isDark ? "#181818" : "#fff"
+      );
+      document.documentElement.style.setProperty(
+        "--nav-text",
+        isDark ? "#faf9f6" : "#222"
+      );
+      document.body.style.background = isDark ? "#181818" : "#faf9f6";
+    }
+    if (localStorage.getItem("darkmode") === "1") {
+      document.documentElement.classList.add("darkmode");
+      updateColors();
+    }
+    updateColors();
+  }
+</script>

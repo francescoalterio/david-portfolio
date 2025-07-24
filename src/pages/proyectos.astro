@@ -1,0 +1,17 @@
+---
+title: "Proyectos";
+import projects from "../data/projects.json";
+import Layout from "../layouts/Layout.astro";
+import ProjectCards from "../components/ProjectCards.astro";
+---
+
+<Layout>
+  <Fragment slot="default">
+    <h1
+      style="text-align:center; margin-top:2rem; font-size:2.3rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:600; letter-spacing:0.02em;"
+    >
+      Proyectos
+    </h1>
+    <ProjectCards projects={projects} />
+  </Fragment>
+</Layout>

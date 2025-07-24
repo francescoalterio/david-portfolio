@@ -1,11 +1,109 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <section
+    style="max-width:900px; margin:2.5rem auto 3.5rem auto; text-align:center;"
+  >
+    <h1
+      style="font-size:2.5rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:600; margin-bottom:1.2rem;"
+    >
+      Portafolio de Arquitectura
+    </h1>
+    <p
+      style="font-size:1.15rem; color:#444; line-height:1.7; margin-bottom:2.5rem; font-family:'Montserrat',sans-serif;"
+    >
+      Bienvenido al portafolio de David, arquitecto especializado en espacios
+      funcionales y estéticos. Descubre algunos de mis proyectos destacados y
+      contáctame para colaborar.
+    </p>
+  </section>
+
+  <section style="max-width:1100px; margin:0 auto 4rem auto;">
+    <h2
+      style="font-size:2rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:500; margin-bottom:2rem; text-align:center;"
+    >
+      Proyectos destacados
+    </h2>
+    <div
+      style="display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:center;"
+    >
+      {
+        await import("../data/projects.json").then(({ default: projects }) =>
+          projects.slice(0, 3).map((project) => (
+            <article style="width:340px; background:#faf9f6; border-radius:16px; box-shadow:0 4px 24px #0001; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s;">
+              <img
+                src={project.image}
+                alt={project.title}
+                style="width:100%; height:210px; object-fit:cover; border-top-left-radius:16px; border-top-right-radius:16px; box-shadow:0 2px 12px #0002;"
+              />
+              <div style="padding:1.3rem 1.1rem; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+                <h3 style="font-size:1.2rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:500; margin-bottom:0.7rem;">
+                  {project.title}
+                </h3>
+                <p style="color:#444; font-size:1rem; line-height:1.6; margin-bottom:1.2rem; font-family:'Montserrat',sans-serif;">
+                  {project.description}
+                </p>
+                <a
+                  href={`/proyectos/${project.id}`}
+                  style="display:block; margin-top:auto; background:#222; color:#fff; padding:0.6rem 1.2rem; border-radius:8px; text-align:center; text-decoration:none; font-weight:500; letter-spacing:0.03em; box-shadow:0 2px 8px #0001; transition:background 0.2s;"
+                  onmouseover="this.style.background='#0077b6'"
+                  onmouseout="this.style.background='#222'"
+                >
+                  Ver más detalles
+                </a>
+              </div>
+            </article>
+          ))
+        )
+      }
+    </div>
+  </section>
+
+  <section
+    style="max-width:600px; margin:0 auto 4rem auto; background:#faf9f6; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem;"
+  >
+    <h2
+      style="font-size:1.7rem; font-family:'Montserrat',sans-serif; color:#222; font-weight:500; margin-bottom:1.2rem; text-align:center;"
+    >
+      Contacto
+    </h2>
+    <form
+      name="contacto"
+      method="POST"
+      style="display:flex; flex-direction:column; gap:1.2rem;"
+    >
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Nombre"
+        required
+        style="padding:0.7rem 1rem; border-radius:8px; border:1px solid #ddd; font-size:1rem; font-family:'Montserrat',sans-serif;"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Correo electrónico"
+        required
+        style="padding:0.7rem 1rem; border-radius:8px; border:1px solid #ddd; font-size:1rem; font-family:'Montserrat',sans-serif;"
+      />
+      <textarea
+        name="mensaje"
+        placeholder="Mensaje"
+        required
+        style="padding:0.7rem 1rem; border-radius:8px; border:1px solid #ddd; font-size:1rem; font-family:'Montserrat',sans-serif; min-height:120px;"
+      ></textarea>
+      <button
+        type="submit"
+        style="background:#222; color:#fff; padding:0.8rem 1.6rem; border-radius:8px; font-size:1rem; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:0.03em; border:none; box-shadow:0 2px 8px #0001; cursor:pointer; transition:background 0.2s;"
+        onmouseover="this.style.background='#0077b6'"
+        onmouseout="this.style.background='#222'">Enviar mensaje</button
+      >
+    </form>
+  </section>
 </Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import projects from "../../data/projects.json";
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({ params: { id: project.id } }));
+}
+
+const { id } = Astro.params;
+let project = projects.find((p) => p.id === id);
+
+if (!project) {
+  project = {
+    id: "not-found",
+    title: "Proyecto no encontrado",
+    image: "/assets/prueba.webp",
+    description: "No hay descripción disponible.",
+    details: "El proyecto solicitado no existe o fue eliminado.",
+  };
+}
+---
+
+<Layout>
+  <section
+    style="max-width:700px; margin:2rem auto; background:#faf9f6; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2.5rem 2rem; text-align:center;"
+  >
+    <h1
+      style="font-size:2.2rem; font-weight:600; margin-bottom:1.2rem; color:#222; letter-spacing:0.02em; font-family:'Montserrat',sans-serif;"
+    >
+      {project.title}
+    </h1>
+    <img
+      src={project.image}
+      alt={project.title}
+      style="width:100%; max-width:320px; border-radius:14px; margin:1.5rem auto; box-shadow:0 2px 12px #0002; display:block;"
+      viewTransitionName={`project-image-${project.id}`}
+    />
+    <p
+      style="font-size:1.15rem; color:#444; line-height:1.7; margin-bottom:2rem; font-family:'Montserrat',sans-serif;"
+    >
+      {project.details}
+    </p>
+    <a
+      href="/proyectos"
+      style="display:inline-block; margin-top:1.5rem; background:#222; color:#fff; padding:0.7rem 1.6rem; border-radius:8px; text-decoration:none; font-weight:500; letter-spacing:0.03em; box-shadow:0 2px 8px #0001; transition:background 0.2s;"
+      onmouseover="this.style.background='#0077b6'"
+      onmouseout="this.style.background='#222'">← Volver a proyectos</a
+    >
+  </section>
+</Layout>

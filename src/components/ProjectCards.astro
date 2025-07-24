@@ -1,0 +1,53 @@
+---
+const { projects = [] } = Astro.props;
+---
+
+<section
+  style="display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:center; margin:2.5rem 0;"
+>
+  {
+    projects.map((project) => (
+      <article
+        style="width:340px; background:var(--card-bg,#faf9f6); border-radius:16px; box-shadow:0 4px 24px #0001; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s; color:var(--card-text,#222);"
+        class="card"
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          style="width:100%; height:210px; object-fit:cover; border-top-left-radius:16px; border-top-right-radius:16px; box-shadow:0 2px 12px #0002;"
+          viewTransitionName={`project-image-${project.id}`}
+        />
+        <div style="padding:1.3rem 1.1rem; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+          <h2 style="font-size:1.3rem; font-family:'Montserrat',sans-serif; color:var(--card-text,#222); font-weight:500; margin-bottom:0.7rem;">
+            {project.title}
+          </h2>
+          <p style="color:var(--card-text,#444); font-size:1rem; line-height:1.6; margin-bottom:1.2rem; font-family:'Montserrat',sans-serif;">
+            {project.description}
+          </p>
+          <a
+            href={`/proyectos/${project.id}`}
+            style="display:block; margin-top:auto; background:#222; color:#fff; padding:0.6rem 1.2rem; border-radius:8px; text-align:center; text-decoration:none; font-weight:500; letter-spacing:0.03em; box-shadow:0 2px 8px #0001; transition:background 0.2s;"
+            onmouseover="this.style.background='#0077b6'"
+            onmouseout="this.style.background='#222'"
+            onclick={`if(document.startViewTransition){document.startViewTransition(()=>{window.location.href='/proyectos/${project.id}'}) ; return false;}`}
+          >
+            Ver más detalles
+          </a>
+        </div>
+      </article>
+    ))
+  }
+</section>
+<style>
+  .card {
+    background: var(--card-bg, #faf9f6) !important;
+    color: var(--card-text, #222) !important;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .darkmode .card {
+    background: var(--card-bg, #232323) !important;
+    color: var(--card-text, #faf9f6) !important;
+  }
+</style>
