@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre mí | David Barrientos</title>
+    <meta
+      name="description"
+      content="Sobre David Barrientos: estudiante de arquitectura, filosofía de diseño, habilidades y contacto."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Inicio"
+          >David Barrientos</a
+        >
+        <button
+          class="nav__toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <ul class="nav__links">
+          <li><a href="index.html">Proyectos</a></li>
+          <li><a href="about.html" class="active">Sobre mí</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="about" aria-labelledby="titulo-about">
+        <h1 id="titulo-about">Sobre mí</h1>
+        <div class="about__content">
+          <div class="about__image-wrapper">
+            <img
+              src="images/perfil.webp"
+              alt="Fotografía de David Barrientos"
+              class="about__image"
+              loading="lazy"
+            />
+          </div>
+          <div class="about__text">
+            <p>
+              Soy estudiante de arquitectura apasionado por el diseño
+              contextual, la materialidad honesta y la exploración digital.
+              Combino procesos analógicos (croquis, maquetas físicas) con
+              herramientas digitales para iterar rápidamente y buscar soluciones
+              espaciales claras y humanas.
+            </p>
+            <p>
+              Me interesa cómo la arquitectura puede responder de manera
+              sostenible y poética a las necesidades sociales contemporáneas.
+              Disfruto trabajando en equipos multidisciplinares y documentando
+              el proceso de cada proyecto.
+            </p>
+            <ul class="about__social">
+              <li><a href="#" rel="noopener" target="_blank">Instagram</a></li>
+              <li><a href="#" rel="noopener" target="_blank">LinkedIn</a></li>
+              <li><a href="mailto:contacto@example.com">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>
+        © <span id="year"></span> David Barrientos. Todos los derechos
+        reservados.
+      </p>
+      <ul class="social">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        <li>
+          <a href="mailto:contacto@example.com" aria-label="Correo">Email</a>
+        </li>
+      </ul>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

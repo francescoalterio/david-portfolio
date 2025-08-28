@@ -1,0 +1,92 @@
+<!-- TEMPLATE DE PROYECTO PARA COPIAR -->
+<!-- Pasos para usar: 1. Copia este archivo dentro de la carpeta /projects/ y renómbralo (ej: casa-para-artista.html) 2. Cambia el contenido de los campos marcados. 3. Agrega la card correspondiente en index.html -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><!-- Titulo del Proyecto --> | David Barrientos</title>
+    <meta
+      name="description"
+      content="<!-- Descripción corta SEO del proyecto -->"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html" aria-label="Inicio"
+          >David Barrientos</a
+        >
+        <button
+          class="nav__toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <ul class="nav__links">
+          <li><a href="../index.html" class="active">Proyectos</a></li>
+          <li><a href="../about.html">Sobre mí</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page" aria-labelledby="project-title">
+      <article>
+        <header class="project-page__header">
+          <h1 id="project-title"><!-- Nombre del Proyecto --></h1>
+          <p class="project-page__summary">
+            <!-- Resumen corto del concepto principal -->
+          </p>
+        </header>
+        <section class="project-page__body">
+          <h2>Descripción</h2>
+          <p>
+            <!-- Descripción detallada: objetivos, proceso, materiales, decisiones de diseño. -->
+          </p>
+          <p><!-- Puedes añadir más párrafos según sea necesario. --></p>
+        </section>
+        <section
+          class="project-page__gallery"
+          aria-label="Galería de imágenes del proyecto"
+        >
+          <!-- Para cada imagen: duplica figure, cambia src, alt. -->
+          <figure class="gallery-item">
+            <img
+              src="../images/placeholder-1.jpg"
+              alt="Descripción breve de la imagen"
+              loading="lazy"
+            />
+            <figcaption class="gallery-item__caption">
+              <!-- Texto opcional explicando la imagen. -->
+            </figcaption>
+          </figure>
+          <!-- Más figuras debajo -->
+        </section>
+      </article>
+      <nav class="project-page__back">
+        <a href="../index.html">← Volver a proyectos</a>
+      </nav>
+    </main>
+    <footer class="site-footer">
+      <p>
+        © <span id="year"></span> David Barrientos. Todos los derechos
+        reservados.
+      </p>
+      <ul class="social">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        <li>
+          <a href="mailto:contacto@example.com" aria-label="Correo">Email</a>
+        </li>
+      </ul>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

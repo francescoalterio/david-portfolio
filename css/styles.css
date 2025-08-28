@@ -1,0 +1,464 @@
+/* =============================
+   PALETA & TIPOGRAFÍA
+   ============================= */
+:root {
+  --color-bg: #f5f5f5;
+  --color-bg-alt: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #666;
+  --color-accent: #ff5a36; /* vibrante */
+  --color-accent-alt: #1e88e5;
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 18px rgba(0, 0, 0, 0.12);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --space-page-x: clamp(1rem, 4vw, 2.75rem); /* separación lateral responsiva */
+  font-size: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 300; /* parrafos */
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  /* Layout para sticky footer */
+  min-height: 100dvh; /* soporta barras móviles */
+  min-height: 100vh; /* fallback */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utilidad para "Nimbus Sans" (no se puede cargar directamente desde Google: sugerir fallback) */
+[data-font="nimbus"],
+.overlay h2 {
+  font-family: "Nimbus Sans", "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700; /* titulos bold */
+  margin: 0 0 0.6em;
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0 0 1em;
+}
+
+.hero__subtitle,
+.project-card__desc,
+.project-page__summary {
+  font-weight: 100; /* thin subtitulos */
+}
+
+/* =============================
+   NAV
+   ============================= */
+.site-header {
+  background: var(--color-bg-alt);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+.nav {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+.nav__links a {
+  text-decoration: none;
+  font-weight: 300;
+  color: var(--color-text);
+  position: relative;
+  padding: 0.35rem 0.1rem;
+}
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: var(--transition);
+}
+.nav__links a:hover::after,
+.nav__links a.active::after {
+  width: 100%;
+}
+.nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* =============================
+   HERO
+   ============================= */
+.hero {
+  max-width: 1180px;
+  margin: 2.5rem auto 1.25rem;
+  padding: 0 1rem;
+}
+.hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.hero__subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--color-muted);
+  margin-top: -0.5rem;
+}
+
+/* =============================
+   GRID PROYECTOS
+   ============================= */
+.projects-grid {
+  max-width: 1180px; /* igual que hero para alineación precisa */
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(340px, 1fr)
+  ); /* antes 260px */
+  gap: 2rem; /* más espacio acorde al nuevo tamaño */
+}
+@media (max-width: 780px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.4rem;
+  }
+}
+.project-card {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+.project-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.project-card__media {
+  position: relative;
+  /* Ajuste: antes 4/5 (vertical). Ahora más horizontal 4/3. */
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin: 0;
+}
+/* En pantallas grandes hacer aún un poco más panorámica */
+@media (min-width: 1100px) {
+  .project-card__media {
+    aspect-ratio: 5 / 3;
+  }
+}
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.95);
+  transition: var(--transition);
+}
+.project-card:hover img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1rem 1rem 1.2rem;
+  /* Fondo antes: gradiente a transparente. Ahora: sólido translúcido para mayor legibilidad consistente. */
+  background: rgba(15, 15, 15, 0.72);
+  color: #fff;
+  backdrop-filter: blur(2px); /* ligera separación del contenido (opcional) */
+  -webkit-backdrop-filter: blur(2px);
+  /* Estaba en 70% y se veía un borde superior; ahora se oculta totalmente fuera de la vista. */
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+.project-card:hover .overlay {
+  transform: translateY(0);
+}
+/* Accesibilidad: mostrar también al navegar con teclado */
+.project-card:focus-within .overlay {
+  transform: translateY(0);
+}
+.overlay h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+.project-card__desc {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Mobile: sin hover mostrar siempre info */
+@media (hover: none) {
+  .overlay {
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   ABOUT
+   ============================= */
+.about {
+  max-width: 1180px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 1rem;
+}
+.about__content {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+.about__image-wrapper {
+  position: relative;
+}
+@media (min-width: 760px) {
+  .about__content {
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 2.25rem;
+  }
+  .about__image-wrapper {
+    align-self: flex-start;
+  }
+}
+@media (min-width: 1100px) {
+  .about__content {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 2.75rem;
+  }
+}
+.about__image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-m);
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+  display: block;
+}
+/* Controla el ancho de la columna imagen */
+@media (min-width: 760px) {
+  .about__image-wrapper {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+@media (min-width: 1100px) {
+  .about__image-wrapper {
+    max-width: 300px;
+  }
+}
+/* Ajuste fino en móviles: centrar imagen y reducir gap vertical */
+@media (max-width: 759.98px) {
+  .about__image-wrapper {
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .about__content {
+    gap: 1.4rem;
+  }
+}
+.about__text ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+.about__text a {
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: 300;
+}
+.about__text a:hover {
+  color: var(--color-accent-alt);
+}
+
+/* =============================
+   PROJECT PAGE
+   ============================= */
+.project-page {
+  max-width: 920px; /* ligero aumento para respirar más */
+  margin: 2.5rem auto 4rem;
+  padding: 0 var(--space-page-x);
+}
+/* En pantallas muy grandes centramos y añadimos un borde suave opcional (desactivado por defecto) */
+@media (min-width: 1600px) {
+  .project-page {
+    max-width: 1000px;
+  }
+}
+.project-page__summary {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+.project-page__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.project-page__gallery figure {
+  margin: 0;
+}
+.project-page__gallery img {
+  width: 100%;
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-soft);
+  display: block;
+  background: #eaeaea;
+}
+.project-page__gallery figcaption {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: #0d0d0d; /* aún más oscuro que var(--color-text) */
+  margin-top: 0.6rem;
+  background: rgba(17, 17, 17, 0.06);
+  padding: 0.55rem 0.75rem 0.6rem;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 4px 4px 0;
+  font-weight: 300; /* subir peso para legibilidad */
+  letter-spacing: 0.3px;
+}
+/* Variante oscura si el usuario prefiere esquema oscuro del SO */
+@media (prefers-color-scheme: dark) {
+  .project-page__gallery figcaption {
+    background: rgba(255, 255, 255, 0.07);
+    color: #f5f5f5; /* más claro en dark para contraste */
+  }
+}
+.project-page__back {
+  margin-top: 3rem;
+}
+.project-page__back a {
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: 300;
+}
+.project-page__back a:hover {
+  color: var(--color-accent-alt);
+}
+
+/* =============================
+   FOOTER
+   ============================= */
+.site-footer {
+  background: #111;
+  color: #eee;
+  padding: 2rem 1rem;
+  margin-top: auto;
+}
+.site-footer p {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+}
+.site-footer .social {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.site-footer .social a {
+  color: #eee;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.site-footer .social a:hover {
+  color: var(--color-accent);
+}
+
+/* =============================
+   RESPONSIVE NAV
+   ============================= */
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: block;
+  }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: var(--color-bg-alt);
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-soft);
+    min-width: 170px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: var(--transition);
+  }
+  .nav__links.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   REDUCED MOTION / ACCESSIBILITY
+   ============================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =============================
+   UTILS
+   ============================= */
+img {
+  max-width: 100%;
+}
+
+main {
+  flex: 1 0 auto; /* ocupa el espacio disponible empujando el footer abajo */
+}
+
+.hidden {
+  display: none !important;
+}

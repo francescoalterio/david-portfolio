@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto Ejemplo | David Barrientos</title>
+    <meta
+      name="description"
+      content="Proyecto ejemplo del portafolio de David Barrientos: demostración de estructura y presentación."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html" aria-label="Inicio"
+          >David Barrientos</a
+        >
+        <button
+          class="nav__toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <ul class="nav__links">
+          <li><a href="../index.html" class="active">Proyectos</a></li>
+          <li><a href="../about.html">Sobre mí</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="project-page" aria-labelledby="project-title">
+      <article>
+        <header class="project-page__header">
+          <h1 id="project-title">Proyecto Ejemplo</h1>
+          <p class="project-page__summary">
+            Breve resumen del propósito y carácter del proyecto ejemplo.
+          </p>
+        </header>
+        <section class="project-page__body">
+          <h2>Descripción</h2>
+          <p>
+            Este proyecto de ejemplo muestra cómo estructurar la página de un
+            proyecto: título, resumen, descripción y galería de imágenes
+            vertical.
+          </p>
+          <p>
+            Puedes duplicar este archivo para iniciar un nuevo proyecto,
+            cambiando los textos y agregando las imágenes necesarias en la
+            galería.
+          </p>
+        </section>
+        <section
+          class="project-page__gallery"
+          aria-label="Galería de imágenes del proyecto"
+        >
+          <figure class="gallery-item">
+            <img
+              src="../images/prueba.webp"
+              alt="Vista general del proyecto ejemplo"
+              loading="lazy"
+            />
+            <figcaption class="gallery-item__caption">
+              Imagen de referencia principal.
+            </figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="../images/prueba.webp"
+              alt="Detalle del modelo del proyecto ejemplo"
+              loading="lazy"
+            />
+            <figcaption class="gallery-item__caption">
+              Detalle constructivo / maqueta.
+            </figcaption>
+          </figure>
+        </section>
+      </article>
+      <nav class="project-page__back">
+        <a href="../index.html">← Volver a proyectos</a>
+      </nav>
+    </main>
+    <footer class="site-footer">
+      <p>
+        © <span id="year"></span> David Barrientos. Todos los derechos
+        reservados.
+      </p>
+      <ul class="social">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        <li>
+          <a href="mailto:contacto@example.com" aria-label="Correo">Email</a>
+        </li>
+      </ul>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

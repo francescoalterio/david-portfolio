@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio de David Barrientos | Proyectos</title>
+    <meta
+      name="description"
+      content="Portafolio de arquitectura de David Barrientos: proyectos académicos y personales, maquetas, renders y exploraciones espaciales."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Roboto weights: thin(100), light(300), bold(700); Nimbus Sans sustituida por fallback local si no está -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Inicio"
+          >David Barrientos</a
+        >
+        <button
+          class="nav__toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <ul class="nav__links">
+          <li><a href="index.html" class="active">Proyectos</a></li>
+          <li><a href="about.html">Sobre mí</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="titulo-hero">
+        <h1 id="titulo-hero" class="hero__title">Mis Proyectos</h1>
+        <p class="hero__subtitle">
+          Exploraciones arquitectónicas, maquetas, renders y procesos.
+        </p>
+      </section>
+
+      <section class="projects-grid" aria-label="Listado de proyectos">
+        <!-- Instrucciones para David: Copia un bloque .project-card, cambia data-project, imagen, título y descripción breve. -->
+
+        <article class="project-card" data-project="proyecto-ejemplo">
+          <a href="projects/proyecto-ejemplo.html" class="project-card__link">
+            <figure class="project-card__media">
+              <img
+                src="images/prueba.webp"
+                alt="Vista previa del Proyecto Ejemplo"
+                loading="lazy"
+              />
+              <figcaption class="overlay">
+                <h2 class="project-card__title" data-font="nimbus">
+                  Proyecto Ejemplo
+                </h2>
+                <p class="project-card__desc">
+                  Breve descripción del concepto principal del proyecto.
+                </p>
+              </figcaption>
+            </figure>
+          </a>
+        </article>
+        <article class="project-card" data-project="proyecto-ejemplo">
+          <a href="projects/proyecto-ejemplo.html" class="project-card__link">
+            <figure class="project-card__media">
+              <img
+                src="images/prueba.webp"
+                alt="Vista previa del Proyecto Ejemplo"
+                loading="lazy"
+              />
+              <figcaption class="overlay">
+                <h2 class="project-card__title" data-font="nimbus">
+                  Proyecto Ejemplo
+                </h2>
+                <p class="project-card__desc">
+                  Breve descripción del concepto principal del proyecto.
+                </p>
+              </figcaption>
+            </figure>
+          </a>
+        </article>
+        <article class="project-card" data-project="proyecto-ejemplo">
+          <a href="projects/proyecto-ejemplo.html" class="project-card__link">
+            <figure class="project-card__media">
+              <img
+                src="images/prueba.webp"
+                alt="Vista previa del Proyecto Ejemplo"
+                loading="lazy"
+              />
+              <figcaption class="overlay">
+                <h2 class="project-card__title" data-font="nimbus">
+                  Proyecto Ejemplo
+                </h2>
+                <p class="project-card__desc">
+                  Breve descripción del concepto principal del proyecto.
+                </p>
+              </figcaption>
+            </figure>
+          </a>
+        </article>
+        <article class="project-card" data-project="proyecto-ejemplo">
+          <a href="projects/proyecto-ejemplo.html" class="project-card__link">
+            <figure class="project-card__media">
+              <img
+                src="images/prueba.webp"
+                alt="Vista previa del Proyecto Ejemplo"
+                loading="lazy"
+              />
+              <figcaption class="overlay">
+                <h2 class="project-card__title" data-font="nimbus">
+                  Proyecto Ejemplo
+                </h2>
+                <p class="project-card__desc">
+                  Breve descripción del concepto principal del proyecto.
+                </p>
+              </figcaption>
+            </figure>
+          </a>
+        </article>
+        <!-- Más project-card aquí -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        © <span id="year"></span> David Barrientos. Todos los derechos
+        reservados.
+      </p>
+      <ul class="social">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        <li>
+          <a href="mailto:contacto@example.com" aria-label="Correo">Email</a>
+        </li>
+      </ul>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
